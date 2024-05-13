@@ -30,7 +30,7 @@ def encrypt_data(plaintext, password):
 
     cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
     encryptor = cipher.encryptor()
-    ciphertext = encryptor.update(plaintext) + encryptor.finalize()
+    ciphertext = encryptor.update(plaintext) + encryptor.finalise()
 
     # Return concatenated salt, nonce, tag, and ciphertext for proper decryption later
     return salt + nonce + encryptor.tag + ciphertext
@@ -48,7 +48,7 @@ def decrypt_data(ciphertext, password):
     cipher = Cipher(algorithms.AES(key), modes.GCM(nonce, tag), backend=default_backend())
     decryptor = cipher.decryptor()
    
-    return (decryptor.update(encrypted_message) + decryptor.finalize()).decode('utf-8')  # Decode decrypted bytes to string
+    return (decryptor.update(encrypted_message) + decryptor.finalise()).decode('utf-8')  # Decode decrypted bytes to string
 
 # Example usage:
 

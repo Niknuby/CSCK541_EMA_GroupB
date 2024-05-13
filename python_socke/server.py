@@ -7,7 +7,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import pyperclip
 
-# Initialize Socket Instance
+# Initialise Socket Instance
 sock = socket.socket()
 print("Socket created successfully.")
 
@@ -36,9 +36,9 @@ def select_file():
     file_entry.insert(0, filename)
 
 
-def select_serialization():
-    global serialization_method
-    serialization_method = serialization_var.get()
+def select_serialisation():
+    global serialisation_method
+    serialisation_method = serialisation_var.get()
 
 
 def copy_key():
@@ -47,8 +47,8 @@ def copy_key():
 
 
 def transfer_file():
-    global filename, serialization_method
-    serialization_method = serialization_var.get()  # Declare global variables
+    global filename, serialisation_method
+    serialisation_method = serialisation_var.get()  # Declare global variables
     if not filename:
         messagebox.showerror("Error", "Please select a file to transfer!")
         return
@@ -61,21 +61,21 @@ def transfer_file():
         messagebox.showerror("Error", "File not found!")
         return
 
-    if serialization_method == "json":
-        # Base64 encode the content for JSON serialization
+    if serialisation_method == "json":
+        # Base64 encode the content for JSON serialisation
         content_base64 = base64.b64encode(content).decode()
-        serialized_data = json.dumps({"file_content": content_base64}).encode()
-    elif serialization_method == "xml":
-        # Serialize using XML
+        serialised_data = json.dumps({"file_content": content_base64}).encode()
+    elif serialisation_method == "xml":
+        # Serialise using XML
         root = ET.Element("data")
         ET.SubElement(root, "file_content").text = content.decode()
-        serialized_data = ET.tostring(root)
+        serialised_data = ET.tostring(root)
     else:
-        # Serialize using pickle (binary)
-        serialized_data = content
+        # Serialise using pickle (binary)
+        serialised_data = content
 
     # Encrypt the data
-    encrypted_data = cipher_suite.encrypt(serialized_data)
+    encrypted_data = cipher_suite.encrypt(serialised_data)
 
     # Establish connection with the clients.
     con, addr = sock.accept()
@@ -89,7 +89,7 @@ def transfer_file():
     con.close()
 
 
-# Initialize the Tkinter window
+# Initialise the Tkinter window
 window = tk.Tk()
 window.title("Secure File Transfer")
 
@@ -102,15 +102,15 @@ file_entry.pack()
 select_file_button = tk.Button(window, text="Browse", command=select_file)
 select_file_button.pack()
 
-# Create radio buttons for serialization method
-serialization_var = tk.StringVar()
-serialization_var.set("json")  # Set default selection
+# Create radio buttons for serialisation method
+serialisation_var = tk.StringVar()
+serialisation_var.set("json")  # Set default selection
 
-json_radio = tk.Radiobutton(window, text="JSON", variable=serialization_var, value="json", command=select_serialization)
+json_radio = tk.Radiobutton(window, text="JSON", variable=serialisation_var, value="json", command=select_serialisation)
 json_radio.pack()
-xml_radio = tk.Radiobutton(window, text="XML", variable=serialization_var, value="xml", command=select_serialization)
+xml_radio = tk.Radiobutton(window, text="XML", variable=serialisation_var, value="xml", command=select_serialisation)
 xml_radio.pack()
-binary_radio = tk.Radiobutton(window, text="Binary", variable=serialization_var, value="binary", command=select_serialization)
+binary_radio = tk.Radiobutton(window, text="Binary", variable=serialisation_var, value="binary", command=select_serialisation)
 binary_radio.pack()
 
 # Label to display the generated key

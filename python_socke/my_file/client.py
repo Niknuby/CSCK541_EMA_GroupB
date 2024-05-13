@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 import base64
 from cryptography.fernet import Fernet
 
-# Initialize Socket Instance
+# Initialise Socket Instance
 sock = socket.socket()
 print("Socket created successfully.")
 
@@ -27,21 +27,21 @@ key = b'er0xZuGt9b4FN_LqeloPsMWs97jFlN1aX7Z0W543sts=' # Provide the key here
 cipher_suite = Fernet(key)
 decrypted_data = cipher_suite.decrypt(data)
 
-# Prompt user for the serialization method used by the server
-serialization_method = input("Enter the serialization method used by the server (json, xml, binary): ")
+# Prompt user for the serialisation method used by the server
+serialisation_method = input("Enter the serialisation method used by the server (json, xml, binary): ")
 
-if serialization_method == "json":
-    # Deserialize using JSON
-    deserialized_data = json.loads(decrypted_data)
+if serialisation_method == "json":
+    # Deserialise using JSON
+    deserialised_data = json.loads(decrypted_data)
     # Base64 decode the content
-    content_base64 = deserialized_data["file_content"]
+    content_base64 = deserialised_data["file_content"]
     content = base64.b64decode(content_base64)
-elif serialization_method == "xml":
-    # Deserialize using XML
+elif serialisation_method == "xml":
+    # Deserialise using XML
     root = ET.fromstring(decrypted_data)
     content = root.find("file_content").text.encode()
 else:
-    # Deserialize using pickle (binary)
+    # Deserialise using pickle (binary)
     content = decrypted_data
 
 # Prompt user for the file name to save

@@ -34,7 +34,7 @@ def deserialise_data(data, format_type):
         root = ET.fromstring(data)
         return {child.tag: child.text for child in root}
     else:
-        raise ValueError("Unsupported serialization format")
+        raise ValueError("Unsupported serialisation format")
 
 
 def main():
@@ -45,11 +45,11 @@ def main():
         client_socket.connect((SERVER_ADDRESS, SERVER_PORT))
         print("Connected to server at {}:{}".format(SERVER_ADDRESS, SERVER_PORT))
 
-        # Allow user to choose serialization format
-        format_type = input("Enter serialization format (json/pickle/xml): ").strip().lower()
+        # Allow user to choose serialisation format
+        format_type = input("Enter serialisation format (json/pickle/xml): ").strip().lower()
         while format_type not in ['json', 'pickle', 'xml']:
             print("Invalid format. Please choose 'json', 'pickle', or 'xml'.")
-            format_type = input("Enter serialization format (json/pickle/xml): ").strip().lower()
+            format_type = input("Enter serialisation format (json/pickle/xml): ").strip().lower()
 
         # Example data to be sent
         data = {
@@ -59,7 +59,7 @@ def main():
             'scores': [12, 15, 18]
         }
 
-        # Serialize data
+        # Serialise data
         serialised_data = serialise_data(data, format_type)
         client_socket.sendall(serialised_data)
         print("Data sent to server.")

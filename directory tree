@@ -1,0 +1,22 @@
+├───.venv
+│   ├───Include
+│   ├───Lib
+│   │   └───site-packages
+│   │      
+│   └───Scripts
+├───.vscode
+├───config
+├───data
+├───docs
+├───examples
+├───python_socke
+│   └───my_file
+├───scripts
+├───src
+│   ├───client
+│   │   └───__pycache__
+│   ├───common
+│   ├───server
+│   │   └───__pycache__
+│   └───tests
+└───__pycache__

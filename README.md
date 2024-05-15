@@ -1,7 +1,7 @@
 # CSCK541_EMA_GroupB
  To build a simple client/server network
 
-Our code was designed to communicate with a sever through socket connection, receive encrypted dat, decrypt the data, deserialize it based on the method used and saves the content received to a file.
+Our code was designed to communicate with a sever through socket connection, receive encrypted data, decrypt the data, deserialise it based on the method used and saves the content received to a file.
 
 USAGE 
 
@@ -38,7 +38,7 @@ At last, the final function of this code is to create a socket just as we did in
 - save the received content
 
 ### (Lines 1-4) 
-First, the code begins by importing the necessary libraries (lines 1-4), ensuring that the Python language is recognized, but also that the formats we are choosing to speak in, such as JSON, pickle, etc., are also understood.
+First, the code begins by importing the necessary libraries (lines 1-4), ensuring that the Python language is recognised, but also that the formats we are choosing to speak in, such as JSON, pickle, etc., are also understood.
 ### (Line 5) 
 Then, we attach the code to a common language understood by both the server and client-side formats (line 5) by connecting to the config file - this one line is essential to establishing a network connection.
 ### (Lines 7-39) 

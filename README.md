@@ -55,3 +55,10 @@ Is the docket which is the essential connection between the client side and the 
 - By using the encryption key the data can now be decrypted
 - Dependent on the serilisation method chosen the data will then deserialise
 - Data is then saved to file
+
+## Testing
+- Written unit tests for the following is located under the 'tests' folder: 
+  - client
+  - server
+  - serialisation
+  - encryption

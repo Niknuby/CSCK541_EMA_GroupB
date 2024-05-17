@@ -3,7 +3,7 @@
 
 Our code was designed to communicate with a sever through socket connection, receive encrypted data, decrypt the data, deserialise it based on the method used and saves the content received to a file. Our code consists of two versions as per below: 
 
-#### 'src' folder - contains the initial program however more detailed
+#### 'src' folder - contains the initial program however more detailed.
 #### 'python_socket' folder - although less detailed but utilises a GUI.
 
 USAGE 
